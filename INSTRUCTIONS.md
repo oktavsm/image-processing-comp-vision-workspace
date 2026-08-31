@@ -1,51 +1,51 @@
-# Panduan Penggunaan Comvis Workspace
+# Comvis Workspace Instructions
 
-File ini memuat panduan mendetail tentang cara menggunakan repository ini untuk mata kuliah Visi Komputer dan Pengolahan Citra Digital, termasuk alur Git, pemakaian Makefile, dan struktur penyimpanan file.
+This file contains a detailed guide on how to use this repository for the Computer Vision and Digital Image Processing course, including the Git workflow, Makefile usage, and file storage structure.
 
-## 1. Setup Lingkungan Kerja (Virtual Environment)
-Agar library komputer visi (seperti `opencv-python`) tidak bentrok dengan library global OS, kita menggunakan virtual environment (`.venv`). 
+## 1. Setting Up the Workspace (Virtual Environment)
+To prevent computer vision libraries (like `opencv-python`) from conflicting with global OS libraries, we use a virtual environment (`.venv`). 
 
-Untuk setup awal, cukup jalankan perintah berikut di terminal root proyek:
+For the initial setup, simply run the following command in the project root terminal:
 ```bash
 make setup
 ```
-Perintah ini akan secara otomatis:
-- Membuat folder `.venv/`
-- Mengupdate `pip` ke versi terbaru
-- Menginstal seluruh paket yang ada di `requirements.txt`
+This command will automatically:
+- Create a `.venv/` folder
+- Upgrade `pip` to the latest version
+- Install all packages listed in `requirements.txt`
 
-Setelah selesai, **selalu aktifkan venv** sebelum menjalankan kode apapun melalui terminal Anda:
+Once completed, **always activate the venv** before running any code via your terminal:
 ```bash
 source .venv/bin/activate
 ```
-*(Ciri venv aktif: akan ada teks `(.venv)` di prompt terminal Anda).*
+*(Indicator of an active venv: you will see `(.venv)` in your terminal prompt).*
 
-## 2. Menggunakan Makefile
-Repository ini meminjam konsep C++ / `opengl-workspace` agar running script Python lebih praktis tanpa perintah yang panjang. Berikut command yang tersedia:
+## 2. Using the Makefile
+This repository borrows the C++ / `opengl-workspace` concept to make running Python scripts more practical without typing long commands. The following commands are available:
 
-- `make setup`   : Instalasi awal environment (membuat .venv dan install reqs).
-- `make jupyter` : Membuka Jupyter Notebook di browser Anda, langsung terhubung dengan environment proyek. Sangat disarankan untuk mengerjakan eksperimen (hands-on).
-- `make run`     : Menjalankan file utama jika Anda memindahkan logika program ke `src/main.py`.
-- `make format`  : Secara otomatis merapikan style kode (linting) di folder `src/` menggunakan pustaka `black`.
-- `make clean`   : Menghapus folder virtual environment (`.venv`) serta file cache Python sementara (seperti `__pycache__` dan file `.pyc`). Gunakan ini jika ingin mereset dependensi proyek.
+- `make setup`   : Initial environment installation (creates .venv and installs reqs).
+- `make jupyter` : Opens Jupyter Notebook in your browser, directly connected to the project environment. Highly recommended for hands-on experiments.
+- `make run`     : Runs the main file if you have moved your program logic to `src/main.py`.
+- `make format`  : Automatically formats code style (linting) in the `src/` folder using the `black` library.
+- `make clean`   : Removes the virtual environment folder (`.venv`) and temporary Python cache files (such as `__pycache__` and `.pyc` files). Use this if you want to reset project dependencies.
 
-## 3. Git Workflow (Alur Kerja Cabang/Branch)
-Agar rapi dan tidak mengotori template utama, repository ini menggunakan alur cabang (branching) berikut:
+## 3. Git Workflow (Branching)
+To keep things organized and avoid cluttering the main template, this repository uses the following branching workflow:
 
-- **`main`**: Ini adalah **TEMPLATE**. Jangan bekerja langsung di branch ini. Branch ini hanya berisi struktur dasar.
-- **`experiment/*`**: Gunakan awalan branch ini saat Anda melakukan hands-on di kelas atau sekadar menguji suatu algoritma.
-  - *Contoh: `git checkout -b experiment/color-spaces`*
-- **`task/*`**: Gunakan awalan ini untuk mengerjakan tugas praktikum, PR, atau proyek akhir matakuliah.
-  - *Contoh: `git checkout -b task/assignment-1`*
+- **`main`**: This is the **TEMPLATE**. Do not work directly on this branch. It only contains the base structure.
+- **`experiment/*`**: Use this branch prefix when doing hands-on work in class or simply testing an algorithm.
+  - *Example: `git checkout -b experiment/color-spaces`*
+- **`task/*`**: Use this prefix for practicum assignments, homework, or the course final project.
+  - *Example: `git checkout -b task/assignment-1`*
 
-**Workflow ketika ada tugas baru:**
-1. Pastikan Anda berada di `main` dan mendapatkan versi terbaru:
+**Workflow for a new assignment:**
+1. Make sure you are on `main` and pull the latest version (if using remote):
    `git checkout main && git pull`
-2. Buat branch baru untuk tugas tersebut:
-   `git checkout -b task/nama-tugas`
-3. Kerjakan kode di dalam `notebooks/` atau `src/`
-4. Commit dan push branch tersebut.
+2. Create a new branch for the task:
+   `git checkout -b task/task-name`
+3. Write your code inside `notebooks/` or `src/`
+4. Commit and push the branch.
 
-## 4. Memisahkan Notebook dan Script (.py)
-- Jika Anda masih meraba-raba (trial and error) dalam memproses gambar (seperti mencari parameter thresholding yang tepat), **selalu gunakan `notebooks/`**. Notebook memungkinkan gambar langsung terlihat di bawah baris kode Anda tanpa membuka banyak jendela baru.
-- Jika logika algoritmanya sudah final dan butuh diterapkan untuk ratusan gambar secara otomatis, pindahkan ke file dengan format `.py` ke folder **`src/`**.
+## 4. Separating Notebooks and Scripts (.py)
+- If you are still experimenting (trial and error) in processing images (like finding the right thresholding parameters), **always use `notebooks/`**. Notebooks allow images to be displayed directly below your code blocks without opening multiple new windows.
+- If the algorithm logic is finalized and needs to be applied to hundreds of images automatically, move the code into a `.py` file format in the **`src/`** folder.
