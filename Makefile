@@ -1,6 +1,6 @@
 # Makefile for Computer Vision Workspace
 
-.PHONY: setup jupyter clean format run
+.PHONY: setup jupyter run format stop clean
 
 # Variables
 VENV = .venv
@@ -35,8 +35,14 @@ format:
 	$(PIP) install black
 	$(VENV)/bin/black src/
 
-# 5. Clean python cache and remove virtual environment (reset)
-clean:
+# 5. Stop running services (e.g., Jupyter Notebook)
+stop:
+	@echo "🛑 Stopping Jupyter Notebook services..."
+	@-pkill -f "jupyter" || true
+	@echo "✅ All services stopped."
+
+# 6. Clean python cache and remove virtual environment (reset)
+clean: stop
 	@echo "🧹 Cleaning cache and removing .venv..."
 	rm -rf $(VENV)
 	find . -type d -name "__pycache__" -exec rm -rf {} +

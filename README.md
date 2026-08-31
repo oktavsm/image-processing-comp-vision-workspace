@@ -39,6 +39,11 @@ This workspace includes a `Makefile` to simplify installation and initial setup.
    ```bash
    make jupyter
    ```
+4. **Stop Services & Clean Up**
+   ```bash
+   make stop    # Stops running Jupyter instances
+   make clean   # Stops services, removes cache and .venv
+   ```
 
 ## 📖 Full Guide
 Please read [INSTRUCTIONS.md](INSTRUCTIONS.md) for full details on the workflow (Git workflow), file management, and explanations of each command inside the `Makefile`.

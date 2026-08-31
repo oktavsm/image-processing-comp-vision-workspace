@@ -27,7 +27,8 @@ This repository borrows the C++ / `opengl-workspace` concept to make running Pyt
 - `make jupyter` : Opens Jupyter Notebook in your browser, directly connected to the project environment. Highly recommended for hands-on experiments.
 - `make run`     : Runs the main file if you have moved your program logic to `src/main.py`.
 - `make format`  : Automatically formats code style (linting) in the `src/` folder using the `black` library.
-- `make clean`   : Removes the virtual environment folder (`.venv`) and temporary Python cache files (such as `__pycache__` and `.pyc` files). Use this if you want to reset project dependencies.
+- `make stop`    : Stops any Jupyter Notebook processes running in the background.
+- `make clean`   : Stops running services, removes the virtual environment folder (`.venv`), and deletes temporary Python cache files. Use this to completely reset the project.
 
 ## 3. Git Workflow (Branching)
 To keep things organized and avoid cluttering the main template, this repository uses the following branching workflow:
