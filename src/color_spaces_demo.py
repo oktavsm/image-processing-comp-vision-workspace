@@ -32,7 +32,7 @@ def main():
     img_bgr = cv2.imread(img_path)
     
     if img_bgr is None:
-        print(f"Error: Gambar tidak ditemukan di {img_path}")
+        print(f"Error: Image not found at {img_path}")
         return
 
     # 2. Convert to various color spaces
@@ -52,8 +52,8 @@ def main():
     images = [img_bgr, img_rgb, img_gray, img_hsv, img_lab]
     titles = ['Original (BGR)', 'RGB', 'Grayscale', 'HSV', 'CIELAB (L*a*b*)']
     
-    print("Menampilkan konversi ruang warna (Color Spaces)...")
-    print("Tutup jendela gambar untuk mengakhiri program.")
+    print("Displaying color space conversions...")
+    print("Close the image window to exit the program.")
     display_images(images, titles, 2, 3)
 
 if __name__ == "__main__":
